@@ -1,7 +1,7 @@
-# This R program will read the EDU data from the link https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
-# and will clean this data so that this data can be used in the analysis.
+# This R program will read the EDU data from the file edu.csv in the data folder and will clean this data so that this data can be used in the analysis.
+# NOTE: edu.csu is the file downloaded earlier from the link link https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
 
-# Since the raw data file has a header, read the csv file without the header record
+# Since the raw data file has a header, read the csv file with the header record
 EDU_Data <- read.csv("data/edu.csv",header=TRUE)
 
 library(dplyr)
@@ -10,6 +10,7 @@ library(dplyr)
 str(EDU_Data)
 
 # The structure call tells that there are 234 observations of 31 variables in the data frame; which are all accounted for
+# The column names are already clean, so we won't change any of the column headers
 
 # Let's check the header
 head(EDU_Data)

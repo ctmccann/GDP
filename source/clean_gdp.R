@@ -6,3 +6,4 @@ colnames(df)[3] <- "Country"
 colnames(df)[1] <- "Country_Code"
 colnames(df)[4] <- "Millions_USD($)"
 df <- df[-c(1, 2, 3), ]
+

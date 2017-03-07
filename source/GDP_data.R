@@ -62,7 +62,7 @@ tail(GDP_Data, 10)
 # Column V2 - represents GDP Ranking
 # Column V4 - represents country/Economy name
 # Column v5 - represents GDP amount
-# COlumn v6 - not sure of what kind of data its having, so lets continue for now with cleaning up of the data and will analyze V6 later
+# COlumn v6 - Represents some additional notes regarding the country across which they are mentioned.
 
 # In the end (tail records) of the data frame, it looks like there is some sort of summary of the data which we dont need
 # Lets look at the records having only integer values are there in column v2 (our ranking data)
@@ -72,13 +72,16 @@ GDP_Data[which(grepl('^[0-9]+$',GDP_Data$V2)),]
 # Extract the 190 records from the data frame representing the 190 countries GDP data
 GDP_Data <- GDP_Data[which(grepl('^[0-9]+$',GDP_Data$V2)),]
 
-# Now lets look at column V6 closely to see what it represents
-GDP_Data$V6
-
-# It looks like some sort of groupings done to the countries from a-f or 
-#  might be the countries Morocco, Sudan, Tanzania, Cyprus, Georgia, Moldova are assigned to some values
-# Since we dont have any information about this column data, we will drop this column as there is no 
-#  meaningful information represented by this column required for our analysis.
+# Analysis of Column V6
+# The alphabet in this column represents that there is some additional information available
+#  for the countries against which they are present. The additional information is: -
+# Morocco: - Includes Former Spanish Sahara.
+# Sudan: - Excludes South Sudan
+# Tanzania: - Covers mainland Tanzania only.
+# Cyprus: - Data are for the area controlled by the government of the Republic of Cyprus.
+# Georgia: - Excludes Abkhazia and South Ossetia.
+# Moldova: - Excludes Transnistria.
+# we will drop this column as there is no meaningful information represented by this column required for our analysis.
 GDP_Data <- select(GDP_Data, -V6)
 
 # Lets have a look at the top 5 records of this data frame to verify the data
@@ -113,4 +116,3 @@ head(GDP_Data)
 # writes the table of word length frequency
 write.table(GDP_Data, "data/cleaned_GDP_Data.csv",
             sep = "|", row.names = FALSE, quote = FALSE)
-
