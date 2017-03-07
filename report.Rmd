@@ -1,6 +1,6 @@
 ---
 title: "Case Study 1"
-fontsize: 2pt
+fontsize: 10pt
 output: html_document
 
 ---
