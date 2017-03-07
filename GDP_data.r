@@ -109,3 +109,8 @@ sapply(GDP_Data,class)
 
 # Lets have a look at the top 5 records of this data frame to verify the data
 head(GDP_Data)
+
+# writes the table of word length frequency
+write.table(GDP_Data, "data/cleaned_GDP_Data.csv",
+            sep = "|", row.names = FALSE, quote = FALSE)
+

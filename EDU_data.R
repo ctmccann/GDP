@@ -1,10 +1,8 @@
 # This R program will read the EDU data from the link https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv
 # and will clean this data so that this data can be used in the analysis.
 
-URL_EDU_Data <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2FEDSTATS_Country.csv'
-
 # Since the raw data file has a header, read the csv file without the header record
-EDU_Data <- read.csv(URL_EDU_Data,header=T)
+EDU_Data <- read.csv("data/edu.csv",header=TRUE)
 
 library(dplyr)
 
@@ -35,4 +33,7 @@ EDU_Data[,var_factor] = apply(EDU_Data[,var_factor], 2, function(x) as.character
 # Third, we verify our conversion
 sapply(EDU_Data,class)
 
+# writes the table of word length frequency
+write.table(EDU_Data, "data/cleaned_EDU_Data.csv",
+            sep = "|", row.names = FALSE, quote = FALSE)
 
