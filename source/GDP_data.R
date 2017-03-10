@@ -114,5 +114,5 @@ sapply(GDP_Data,class)
 head(GDP_Data)
 
 # writes the table of word length frequency
-write.table(GDP_Data, "data/cleaned_GDP_Data.csv",
+write.table(GDP_Data, "data/cleaned_GDP_Data.txt",
             sep = "|", row.names = FALSE, quote = FALSE)

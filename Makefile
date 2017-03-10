@@ -16,5 +16,5 @@ tidy_gdp: source/GDP_data.r
 merge: source/merge_data.R
 	Rscript $<
 
-report.html: report.Rmd data/merged_Data.csv
+report.html: report.Rmd data/merged_Data.txt
 	Rscript -e 'rmarkdown::render("$<")'

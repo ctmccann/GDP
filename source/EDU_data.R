@@ -22,19 +22,21 @@ tail(EDU_Data)
 sapply(EDU_Data,class)
 
 # All the variables labeled as "integer" do indeed contain integer data types; no action required
-
-# All the variables labeled as "factor" should be characters; so let's convert them into characters
-
-# First, we obtain all variables that are labeled as "factor" and store it into the "var_factor" variable
+# All the variables labeled as "factor" should be characters; so we'll convert them into characters
+# First, we'll obtain all variables that are labeled as "factor" and store it into the "var_factor" variable
 var_factor <- sapply(EDU_Data, is.factor)
-
-# Second, we convert each "var_factor" variable into a character
+# Second, we'll convert each "var_factor" variable into a character
 EDU_Data[,var_factor] = apply(EDU_Data[,var_factor], 2, function(x) as.character(x))
-
-# Third, we verify our conversion
+# Third, we'll verify our conversion
 sapply(EDU_Data,class)
 
+# There are some rows that are not countries, we'll need to filter them out
+EDU_Data <- EDU_Data[!(is.na(EDU_Data$Income.Group) | EDU_Data$Income.Group==""), ]
+
+# One country has accents in its Long Name field
+Encoding(EDU_Data$Long.Name) <- "UTF-8"
+
 # writes the table of word length frequency
-write.table(EDU_Data, "data/cleaned_EDU_Data.csv",
+write.table(EDU_Data, "data/cleaned_EDU_Data.txt",
             sep = "|", row.names = FALSE, quote = FALSE)
 
